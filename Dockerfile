@@ -16,19 +16,17 @@ EXPOSE 8000
 ARG DEV=false
 
 # run a cmd on a image (&& \ to have multiple lines)
-# 1 create venv
-# 2 upgrade pip for venv
-# 3 install requeriments
-# 4 install dev requirements if in dev mode
-# 5 remove tmp directory (we hould keep docker images as light as possible)
-# 6 add a new user inside our image for more safety
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
+    apk add --update --no-cache postgresql-client && \
+    apk add --update --no-cache --virtual .tmp-build-deps  \
+        build-base postgresql-dev musl-dev && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true" ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     rm -rf /tmp &&\
+    apk del .tmp-build-deps && \
     adduser \
         --disabled-password \
         --no-create-home \
