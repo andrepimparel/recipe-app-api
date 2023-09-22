@@ -1,17 +1,18 @@
 # recipe-app-api
  Recipe API project with Django abd Docker
 
- # Docker
- docker build .
- docker-compose build
- docker-compose down
- docker-compose up
+# Docker
+ligar a app do docker para funcionar
+docker build .
+docker-compose build
+docker-compose down
+docker-compose up
 
- # Linting
- install flake8 package
- docker-compose run --rm app sh -c "flake8"
+# Linting
+install flake8 package
+docker-compose run --rm app sh -c "flake8"
 
- # Unit Test
+# Unit Test
 docker-compose run --rm app sh -c "python manage.py test"
 
 # Create Django
