@@ -1,4 +1,4 @@
-""" 
+"""
 Django admin customization
 """
 from django.contrib import admin
@@ -7,16 +7,17 @@ from django.utils.translation import gettext_lazy as _
 
 from core import models
 
+
 class UserAdmin(BaseUSerAdmin):
     """Define the admin pages for users."""
     ordering = ['id']
-    list_display = ['email','name']
+    list_display = ['email', 'name']
     fieldsets = (
-        (None, {'fields': ('email','password')}),
+        (None, {'fields': ('email', 'password')}),
         (
             _('Permissons'),
             {
-                'fields':(
+                'fields': (
                     'is_active',
                     'is_staff',
                     'is_superuser',
@@ -39,7 +40,7 @@ class UserAdmin(BaseUSerAdmin):
                'is_superuser',
            )
         }),
-    ) 
+    )
 
 
 admin.site.register(models.User, UserAdmin)
