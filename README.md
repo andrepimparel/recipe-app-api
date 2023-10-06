@@ -16,8 +16,8 @@ docker-compose run --rm app sh -c "flake8"
 docker-compose run --rm app sh -c "python manage.py test"
 
 # Create Django
-docker-compose run --rm app sh -c "django-admin startproject app ."
-docker-compose run --rm app sh -c "python manage.py startapp core"
+docker-compose run --rm app sh -c "django-admin startproject app ." (create project)
+docker-compose run --rm app sh -c "python manage.py startapp core" (create app)
 
 # Run Service
 docker-compose up
@@ -37,3 +37,6 @@ docker volume rm "nomeVolume" (eliminar)
 
 # Django admin
 docker-compose run --rm app sh -c "python manage.py createsuperuser"
+
+# Create app
+docker-compose run --rm app sh -c "python manage.py startapp user"
