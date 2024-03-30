@@ -39,4 +39,5 @@ docker volume rm "nomeVolume" (eliminar)
 docker-compose run --rm app sh -c "python manage.py createsuperuser"
 
 # Create app
-docker-compose run --rm app sh -c "python manage.py startapp user"
+docker-compose run --rm app sh -c "python manage.py startapp /*NAMEAPP/*"
+add to settings INSTALED_APPS
